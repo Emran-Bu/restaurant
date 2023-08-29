@@ -12,7 +12,7 @@
 
     <title>Klassy Cafe - Restaurant HTML Template</title>
 <!--
-    
+
 TemplateMo 558 Klassy Cafe
 
 https://templatemo.com/tm-558-klassy-cafe
@@ -30,9 +30,9 @@ https://templatemo.com/tm-558-klassy-cafe
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
     </head>
-    
+
     <body>
-    
+
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -40,10 +40,10 @@ https://templatemo.com/tm-558-klassy-cafe
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>
     <!-- ***** Preloader End ***** -->
-    
-    
+
+
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -59,8 +59,8 @@ https://templatemo.com/tm-558-klassy-cafe
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
-                           	
-                        <!-- 
+
+                        <!--
                             <li class="submenu">
                                 <a href="javascript:;">Drop Down</a>
                                 <ul>
@@ -71,7 +71,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             </li>
                         -->
                             <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
+                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">Features</a>
                                 <ul>
@@ -82,8 +82,28 @@ https://templatemo.com/tm-558-klassy-cafe
                                 </ul>
                             </li>
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
-                        </ul>        
+                            <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
+
+                            @if (Route::has('login'))
+                                {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
+                                    @auth
+                                        <li>
+                                            <x-app-layout>
+
+                                            </x-app-layout>
+                                        </li>
+                                        {{-- <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></li> --}}
+                                    @else
+                                        <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
+
+                                        @if (Route::has('register'))
+                                            <li><a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
+                                        @endif
+                                    @endauth
+                                {{-- </div> --}}
+                            @endif
+
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -411,14 +431,14 @@ https://templatemo.com/tm-558-klassy-cafe
                               </fieldset>
                             </div>
                             <div class="col-lg-6">
-                                <div id="filterDate2">    
+                                <div id="filterDate2">
                                   <div class="input-group date" data-date-format="dd/mm/yyyy">
                                     <input  name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
                                     <div class="input-group-addon" >
                                       <span class="glyphicon glyphicon-th"></span>
                                     </div>
                                   </div>
-                                </div>   
+                                </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
                               <fieldset>
@@ -553,7 +573,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                             </div>
                                         </div>
                                     </div>
-                                </article>  
+                                </article>
                                 <article id='tabs-2'>
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -629,7 +649,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                             </div>
                                         </div>
                                     </div>
-                                </article>  
+                                </article>
                                 <article id='tabs-3'>
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -705,7 +725,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                             </div>
                                         </div>
                                     </div>
-                                </article>   
+                                </article>
                             </section>
                         </div>
                     </div>
@@ -713,8 +733,8 @@ https://templatemo.com/tm-558-klassy-cafe
             </div>
         </div>
     </section>
-    <!-- ***** Chefs Area Ends ***** --> 
-    
+    <!-- ***** Chefs Area Ends ***** -->
+
     <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
@@ -737,7 +757,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
                         <p>© Copyright Klassy Cafe Co.
-                        
+
                         <br>Design: TemplateMo</p>
                     </div>
                 </div>
@@ -759,11 +779,11 @@ https://templatemo.com/tm-558-klassy-cafe
     <script src="assets/js/scrollreveal.min.js"></script>
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    <script src="assets/js/slick.js"></script> 
-    <script src="assets/js/lightbox.js"></script> 
-    <script src="assets/js/isotope.js"></script> 
-    
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/isotope.js"></script>
+
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
     <script>
@@ -778,7 +798,7 @@ https://templatemo.com/tm-558-klassy-cafe
               $("."+selectedClass).fadeIn();
               $("#portfolio").fadeTo(50, 1);
             }, 500);
-                
+
             });
         });
 
