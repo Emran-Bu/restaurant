@@ -1,4 +1,5 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+{{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100"> --}}
+<nav x-data="{ open: false }" class="@if(Auth::user()->usertype == '1') border-gray-100   @else bg-white border-b border-gray-100 @endif">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,7 +7,7 @@
 
             </div>
 
-            <div class="hidden sm:flex">
+            <div class="hidden sm:flex @if(Auth::user()->usertype == '1') sm:items-center @endif">
                 <!-- Teams Dropdown / sm:items-center sm:ml-6-->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
@@ -58,7 +59,7 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="ml-3 relative">
+                <div class="relative" style="@if(Auth::user()->usertype == '1') margin-left: 30rem @endif">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
