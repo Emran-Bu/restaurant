@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Auth;
 class homeController extends Controller
 {
     // home page show
-    function index ()
+    public function index ()
     {
         return view('home');
     }
 
     // admin page show
-    function redirects ()
+    public function redirects ()
     {
         $usertype = Auth::user()->usertype;
 

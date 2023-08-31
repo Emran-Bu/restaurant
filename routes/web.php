@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\homeController;
@@ -19,7 +20,9 @@ use App\Http\Controllers\homeController;
 //     return view('home');
 // });
 
-Route::get('/',[homeController::class, 'index']);
+Route::get('/', [homeController::class, 'index']);
+
+Route::get('/users', [adminController::class, 'user']);
 
 Route::get('/redirects',[homeController::class, 'redirects']);
 
