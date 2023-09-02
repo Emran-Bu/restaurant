@@ -26,9 +26,19 @@ Route::get('/users', [adminController::class, 'user']);
 
 Route::get('/deleteuser/{id}', [adminController::class, 'deleteuser']);
 
-Route::get('/foodmenu', [adminController::class, 'foodmenu']);
+Route::get('/foodmenu', [adminController::class, 'foodmenu'])->name("foodmenu");
+
+Route::get('/deletefood/{id}', [adminController::class, 'deletefood']);
 
 Route::post('/uploadfood', [adminController::class, 'upload']);
+
+Route::get('/foodview/{id}', [adminController::class, 'foodview']);
+
+Route::post('/updatefood/{id}', [adminController::class, 'updatefood']);
+
+Route::post('/reservation', [adminController::class, 'reservation']);
+
+Route::get('/viewreservation', [adminController::class, 'viewreservation']);
 
 Route::get('/redirects',[homeController::class, 'redirects']);
 

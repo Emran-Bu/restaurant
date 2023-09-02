@@ -12,65 +12,44 @@
           <div class="content-wrapper">
 
             <div class="form-group">
-                <form action="{{ url('/uploadfood') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('/updatefood', $data->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                       <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control text-dark" id="staticEmail" name="title">
+                        <input type="text" class="form-control text-dark" id="staticEmail" name="title" value="{{ $data->title }}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="staticEmail" class="col-sm-2 col-form-label">Price</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control text-dark" id="staticEmail" name="price">
+                        <input type="text" class="form-control text-dark" id="staticEmail" name="price" value="{{ $data->price }}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="staticEmail" class="col-sm-2 col-form-label">Image</label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-6">
                         <input type="file" class="form-control text-dark" id="staticEmail" name="image">
+                      </div>
+                      <div class="col-sm-4">
+                        <input type="hidden" name="oldImage" id="" value="{{ $data->image }}">
+                        <img class="rounded-0 w-75" style="height: 130px; !important" src="/foodimage/{{ $data->image }}" alt="">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="staticEmail" class="col-sm-2 col-form-label">Description</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control text-dark" id="staticEmail" name="description">
+                        <input type="text" class="form-control text-dark" id="staticEmail" name="description" value="{{ $data->description }}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="staticEmail" class="col-sm-2 col-form-label"></label>
                       <div class="col-sm-10 mt-3">
-                        <input type="submit" class="form-control text-light" id="staticEmail">
+                        <input type="submit" value="Update" class="form-control text-light" id="staticEmail">
                       </div>
                     </div>
                 </form>
             </div>
-
-            <div class="mt-5">
-                <table class="table-stripped table">
-                    <tr>
-                        <th>SL</th>
-                        <th>title</th>
-                        <th>price</th>
-                        <th>Description</th>
-                        <th>Image</th>
-                        <th>Action</th>
-                    </tr>
-                    @foreach ( $data as $data)
-                    <tr>
-                        <td>{{ $data->id }}</td>
-                        <td>{{ $data->title }}</td>
-                        <td>{{ $data->price }}</td>
-                        <td>{{ substr($data->description, 0, 20) . "..." }}</td>
-                        <td><img class="rounded-0 w-75" style="height: 130px; !important" src="/foodimage/{{ $data->image }}" alt=""></td>
-                        <td><a onclick="return confirm('Are you sure delete this food?')" href="{{ url('/deletefood', $data->id) }}">Deleted</a></td>
-                        <td><a href="{{ url('/foodview', $data->id) }}">Edit</a></td>
-                    </tr>
-                    @endforeach
-                </table>
-            </div>
-
 
           </div>
           <!-- content-wrapper ends -->
