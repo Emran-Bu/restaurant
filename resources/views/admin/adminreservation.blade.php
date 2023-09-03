@@ -34,7 +34,7 @@
                         <td>{{ $data->date }}</td>
                         <td>{{ $data->time }}</td>
                         <td>{{ substr( $data->message, 0, 25) . "(...)"}}</td>
-                        <td>d</td>
+                        <td><a onclick="return confirm('Are you sure delete this food?')" href="{{ url('deletereservation', $data->id) }}">Delete</a></td>
                     </tr>
                     @endforeach
                 </table>

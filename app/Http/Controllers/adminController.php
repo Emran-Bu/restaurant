@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Food;
 
+use App\Models\Chef;
+
 use App\Models\Reservation;
 
 class adminController extends Controller
@@ -125,5 +127,81 @@ class adminController extends Controller
     {
         $data = Reservation::all();
         return view('admin.adminreservation', compact("data"));
+    }
+
+    // deletereservation
+    public function deletereservation($id)
+    {
+        $data = Reservation::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
+
+    // chef
+    public function chef()
+    {
+        $data = Chef::all();
+        return view("admin.adminchef", compact("data"));
+    }
+
+    // uploadchef
+    public function uploadchef(Request $request)
+    {
+        $chef = new Chef;
+
+        if ($request->image) {
+            $image = $request->image;
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $request->image->move('chefimage', $imageName);
+            $chef->image = $imageName;
+        }
+
+        $chef->name = $request->name;
+        $chef->speciality = $request->speciality;
+        $chef->save();
+
+        return redirect()->back();
+    }
+
+    // deletechef
+    public function deletechef($id)
+    {
+        $data = Chef::find($id);
+        $data->delete();
+
+        return redirect()->back();
+    }
+
+    // chefview
+    public function chefview($id)
+    {
+        $data = Chef::find($id);
+        return view("admin.chefview", compact("data"));
+    }
+
+    // updatechef
+    public function updatechef(Request $request, $id)
+    {
+        $chef = Chef::find($id);
+
+        if ($request->image) {
+
+            $oldImage = $request->oldImage;
+            if($oldImage)
+            {
+                $location = 'chefimage/' . $oldImage;
+                unlink($location);
+            }
+            $image = $request->image;
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $request->image->move('chefimage', $imageName);
+            $chef->image = $imageName;
+        }
+
+        $chef->name = $request->name;
+        $chef->speciality = $request->speciality;
+        $chef->update();
+
+        return redirect()->back();
     }
 }

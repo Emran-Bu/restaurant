@@ -40,6 +40,18 @@ Route::post('/reservation', [adminController::class, 'reservation']);
 
 Route::get('/viewreservation', [adminController::class, 'viewreservation']);
 
+Route::get('/deletereservation/{id}', [adminController::class, 'deletereservation']);
+
+Route::get('/chef', [adminController::class, 'chef']);
+
+Route::post('/uploadchef', [adminController::class, 'uploadchef']);
+
+Route::get('/deletechef/{id}', [adminController::class, 'deletechef']);
+
+Route::get('/chefview/{id}', [adminController::class, 'chefview']);
+
+Route::post('/updatechef/{id}', [adminController::class, 'updatechef']);
+
 Route::get('/redirects',[homeController::class, 'redirects']);
 
 Route::middleware([
